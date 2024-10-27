@@ -1,0 +1,32 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Crear Producto</h1>
+    <form action="{{ route('productos.store') }}" method="POST">
+        @csrf
+
+        <div class="form-group">
+            <label for="nombre">Nombre del Producto</label>
+            <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="valor_neto">Valor Neto</label>
+            <input type="number" name="valor_neto" class="form-control" value="{{ old('valor_neto') }}" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad_en_stock">Cantidad en Stock</label>
+            <input type="number" name="cantidad_en_stock" class="form-control" value="{{ old('cantidad_en_stock') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="porcentaje_ganancia">Porcentaje de Ganancia</label>
+            <input type="number" name="porcentaje_ganancia" class="form-control" value="{{ old('porcentaje_ganancia', 40) }}" step="0.01" max="100" min="0">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+    </form>
+</div>
+@endsection
